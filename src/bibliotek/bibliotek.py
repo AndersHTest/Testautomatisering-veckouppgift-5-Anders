@@ -8,7 +8,7 @@ class Bibliotek:
 
     def register_user(self, user):
         if any(curr_user.user_id == user.user_id for curr_user in self.users):
-            print("User with the same ID already exists! Try another ID.")
+            print("User ID already exists! Try another ID.")
             return
         self.users.append(user)
         print(f"New user {user.name} added successfully!")
