@@ -5,11 +5,13 @@ def temperaturomvandling(enhet, temp):
 
     if enhet in fahrenheit:
         temp_c = (temp - 32) * 5 / 9
-        return f"{temp} grader Fahrenheit blir {round(temp_c, 1)} grader Celsius."
+        return (f"{temp} grader Fahrenheit blir "
+                f"{round(temp_c, 1)} grader Celsius.")
 
     elif enhet in celsius:
         temp_f = (temp * 1.8) + 32
-        return f"{temp} grader Celsius blir {round(temp_f, 1)} grader Fahrenheit."
+        return (f"{temp} grader Celsius blir"
+                f" {round(temp_f, 1)} grader Fahrenheit.")
 
     else:
         return None
