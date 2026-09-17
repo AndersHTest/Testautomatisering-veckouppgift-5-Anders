@@ -18,6 +18,11 @@ class Bibliotek:
                        if title.lower() in book.title.lower()]
         return found_books
 
+    def search_book_by_author(self, author):
+        found_books = [book for book in self.books
+                       if author.lower() in book.author.lower()]
+        return found_books
+
     def list_books(self):
         if self.books:
             print("Books in the Library:")
