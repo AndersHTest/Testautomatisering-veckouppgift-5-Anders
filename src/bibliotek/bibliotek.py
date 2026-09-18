@@ -11,7 +11,7 @@ class Bibliotek:
             print("User ID already exists! Try another ID.")
             return
         self.users.append(user)
-        print(f"New user {user.name} added successfully!")
+        # print(f"New user {user.name} added successfully!")
 
     def search_book_by_title(self, title):
         found_books = [book for book in self.books
@@ -64,7 +64,7 @@ class User:
         if book.check_availability():
             self.borrowed_books.append(book)
             book.update_quantity(-1)  # Decrease quantity of borrowed books
-            print(f"{self.name} has borrowed '{book.title}'")
+            # print(f"{self.name} has borrowed '{book.title}'")
         else:
             print(f"'{book.title}' is not available.")
 
@@ -78,8 +78,11 @@ class User:
 
     def view_borrowed_books(self):
         if self.borrowed_books:
-            print(f"{self.name}'s Borrowed Books:")
+            # print(f"{self.name}'s Borrowed Books:")
+            a = []
             for book in self.borrowed_books:
-                print(f" - {book.title}")
+                a.append(book.title)
+            return a
+
         else:
-            print(f"{self.name} has not borrowed any books.")
+            return f"{self.name} has not borrowed any books."
