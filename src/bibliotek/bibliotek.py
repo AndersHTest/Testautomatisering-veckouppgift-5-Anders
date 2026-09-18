@@ -40,8 +40,9 @@ class Book:
         self.title = title
 
     def display_book_info(self):
-        print(f"ID: {self.book_id}, Title: {self.title}, "
+        text = (f"ID: {self.book_id}, Title: {self.title}, "
               f"Author: {self.author}, Available Quantity: {self.quantity}")
+        return text
 
     def check_availability(self):
         return self.quantity > 0
