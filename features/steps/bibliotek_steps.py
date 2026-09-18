@@ -43,8 +43,6 @@ def step_impl_bibliotek_search_by_title_2(context):
     if result:
         for b in result:
             context.result = b.display_book_info()
-    else:
-        context.result = f"No books with title {context.title}"
 
 
 @then(u'ska jag få information om boken finns tillgänglig')
