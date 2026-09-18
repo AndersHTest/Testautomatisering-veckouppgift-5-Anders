@@ -1,10 +1,10 @@
-from behave import *
-from src.bibliotek.bibliotek import *
-from src.bibliotek.bibliotek import Bibliotek
+from behave import given, when, then
+from src.bibliotek.bibliotek import Bibliotek, User, Book
 
 
-@given(u'att jag har ett bibliotek med minst en bok och en användare som heter Lisa')
-def step_impl(context):
+@given(u'att jag har ett bibliotek med minst'
+       u' en bok och en användare som heter Lisa')
+def step_impl_bibliotek_register_user_1(context):
     anders_bibliotek = Bibliotek()
     context.bibliotek = anders_bibliotek
 
@@ -16,18 +16,18 @@ def step_impl(context):
 
 
 @when(u'jag registrerar henne på biblioteket')
-def step_impl(context):
+def step_impl_bibliotek_register_user_2(context):
     context.bibliotek.register_user(context.user)
     context.result = context.bibliotek.users
 
 
 @then(u'ska Lisa vara medlem på biblioteket')
-def step_impl(context):
+def step_impl_bibliotek_register_user_3(context):
     assert context.user in context.result
 
 
 @given(u'att det finns ett bibliotek med ett par böcker tillgängliga')
-def step_impl(context):
+def step_impl_bibliotek_search_by_title_1(context):
     anders_bibliotek = Bibliotek()
     context.bibliotek = anders_bibliotek
     context.bok_1 = Book(1, "Anders", "Anders Biografi", 10)
@@ -37,7 +37,7 @@ def step_impl(context):
 
 
 @when(u'jag söker efter Titanic')
-def step_impl(context):
+def step_impl_bibliotek_search_by_title_2(context):
     context.title = context.bok_2.title
     result = context.bibliotek.search_book_by_title(context.title)
     if result:
@@ -48,5 +48,6 @@ def step_impl(context):
 
 
 @then(u'ska jag få information om boken finns tillgänglig')
-def step_impl(context):
-    assert context.result == "ID: 2, Title: Titanic, Author: Andersson, Available Quantity: 10"
+def step_impl_bibliotek_search_by_title_3(context):
+    assert context.result == ("ID: 2, Title: Titanic, "
+                              "Author: Andersson, Available Quantity: 10")
