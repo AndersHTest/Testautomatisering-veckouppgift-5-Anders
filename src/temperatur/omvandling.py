@@ -15,3 +15,7 @@ def temperaturomvandling(enhet, temp):
 
     else:
         return None
+
+f = "f"
+c = "c"
+print(temperaturomvandling(c, 10))
