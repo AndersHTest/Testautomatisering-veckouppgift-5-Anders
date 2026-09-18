@@ -2,6 +2,7 @@ from behave import given, when, then
 from src.bibliotek.bibliotek import Bibliotek, User, Book
 
 
+# register user
 @given(u'att jag har ett bibliotek med minst'
        u' en bok och en användare som heter Lisa')
 def step_impl_bibliotek_register_user_1(context):
@@ -26,6 +27,7 @@ def step_impl_bibliotek_register_user_3(context):
     assert context.user in context.result
 
 
+# search book by title
 @given(u'att det finns ett bibliotek med ett par böcker tillgängliga')
 def step_impl_bibliotek_search_by_title_1(context):
     anders_bibliotek = Bibliotek()
@@ -49,3 +51,13 @@ def step_impl_bibliotek_search_by_title_2(context):
 def step_impl_bibliotek_search_by_title_3(context):
     assert context.result == ("ID: 2, Title: Titanic, "
                               "Author: Andersson, Available Quantity: 10")
+
+
+# search book by author
+@when(u'jag söker efter Andersson')
+def step_impl_bibliotek_search_by_author_2(context):
+    context.author = context.bok_2.author
+    result = context.bibliotek.search_book_by_author(context.author)
+    if result:
+        for a in result:
+            context.result = a.display_book_info()

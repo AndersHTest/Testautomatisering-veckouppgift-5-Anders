@@ -10,3 +10,9 @@ Feature: Bibliotek
     Given att det finns ett bibliotek med ett par böcker tillgängliga
     When jag söker efter Titanic
     Then ska jag få information om boken finns tillgänglig
+
+
+  Scenario: söka efter böcker baserat på författare
+    Given att det finns ett bibliotek med ett par böcker tillgängliga
+    When jag söker efter Andersson
+    Then ska jag få information om boken finns tillgänglig
