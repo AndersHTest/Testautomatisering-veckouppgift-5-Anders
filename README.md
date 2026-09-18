@@ -9,6 +9,6 @@
 | 1 Temperaturomvandling          | 100%   | 🟢     |
 | 2 Lagerhållning                 | 0%     | 🟠     |
 | 3 Bankkonto                     | 0%     | 🟠     |
-| 4 Bibliotek                     | 0%     | 🟠     |
+| 4 Bibliotek                     | 75%    | 🟡     |
 
 <br>
