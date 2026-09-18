@@ -64,6 +64,7 @@ def step_impl_bibliotek_search_by_author_1(context):
             context.result = a.display_book_info()
 
 
+# låna en bok
 @when(u'jag registrerar henne på biblioteket och lånar en bok')
 def step_impl_bibliotek_lana_en_bok_1(context):
     context.bibliotek.register_user(context.user)
@@ -71,9 +72,7 @@ def step_impl_bibliotek_lana_en_bok_1(context):
     context.borrowed_book = context.user.view_borrowed_books()
 
 
-# låna en bok
-@then(u'kan lisa låna en bok och boken blir '
-      u'registrerad på henne och lagerhållningen uppdateras')
+@then(u'blir boken registrerad på henne och lagerhållningen uppdateras')
 def step_impl_bibliotek_lana_en_bok_2(context):
     assert context.bok_1.title in context.borrowed_book
     # Boken är registrerad på Lisa
@@ -81,3 +80,34 @@ def step_impl_bibliotek_lana_en_bok_2(context):
     # Lisa har lånat 1 bok
     assert context.bok_1.quantity == 9
     # Lagerhållning uppdateras från 10 till 9.
+
+
+# lämna tillbaka en bok
+@given(u'att jag har ett bibliotek med minst en '
+       u'bok och en registrerad användare som heter Lisa')
+def step_impl_bibliotek_lamna_tillbaka_en_bok_1(context):
+    anders_bibliotek = Bibliotek()
+    context.bibliotek = anders_bibliotek
+
+    anders_biografi = Book(1, "Anders", "Anders Biografi", 10)
+    context.bok_1 = anders_biografi
+    anders_bibliotek.add_book(context.bok_1)
+
+    lisa = User(1, "Lisa")
+    context.user = lisa
+
+    context.bibliotek.register_user(context.user)
+    context.user.borrow_book(context.bok_1)
+
+
+@when(u'Lisa lämnar tillbaka boken')
+def step_impl_bibliotek_lamna_tillbaka_en_bok_2(context):
+    context.user.return_book(context.bok_1)
+    context.borrowed_book = context.user.view_borrowed_books()
+
+
+@then(u'Lisa har 0 böcker lånade och lagerhållningen är uppdaterad')
+def step_impl_bibliotek_lana_en_bok_3(context):
+    assert context.bok_1.title not in context.borrowed_book
+    assert len(context.borrowed_book) == 0
+    assert context.bok_1.quantity == 10

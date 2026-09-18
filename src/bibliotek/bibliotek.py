@@ -85,4 +85,4 @@ class User:
             return a
 
         else:
-            return f"{self.name} has not borrowed any books."
+            return []
