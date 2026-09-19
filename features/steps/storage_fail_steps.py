@@ -8,6 +8,7 @@ def step_impl_kundvagn_1(context):
     context.skruvmejsel = StockItem("Skruvmejsel", 20)
     context.stock = Stock()
 
+
 @when(u'jag lägger till en produkt i kundvagnen_fail')
 def step_impl_kundvagn_2(context):
     context.stock.add_product(context.hammare)
@@ -15,16 +16,19 @@ def step_impl_kundvagn_2(context):
     context.stock.add_product_to_cart(context.hammare, 2)
     context.stock.add_product_to_cart(context.skruvmejsel, 3)
     context.kundvagn = context.stock.get_cart_items()
-    context.hammare_lager = context.stock.get_product_amount(context.hammare.name)
-    context.skruvmejsel_lager = context.stock.get_product_amount(context.skruvmejsel.name)
+    context.hammare_lager = (context.stock.get_product_amount
+                             (context.hammare.name))
+    context.skruvmejsel_lager = (context.stock.get_product_amount
+                                 (context.skruvmejsel.name))
     context.result_kundvagn = "Hammare: 2 stSkruvmejsel: 3 st"
     context.result_hammare = 8
     context.result_skruvmejsel = 17
 
+
 @then(u'ska kundvagnen uppdateras_fail')
 def step_impl_kundvagn_3(context):
-    #print(context.kundvagn)
-    #print(context.result_kundvagn)
+    # print(context.kundvagn)
+    # print(context.result_kundvagn)
     assert context.kundvagn == context.result_kundvagn
 
 

@@ -20,7 +20,6 @@ class Stock:
         else:
             return False
 
-
     def get_product_amount(self, name):
         a = []
         for i in self.items:
