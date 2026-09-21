@@ -1,16 +1,23 @@
 repos:
-  - repo: meta
+-   repo: local
     hooks:
-      - id: identity
+      - id: pytest
         name: Kör tester med Pytest
         entry: pytest
-        language: system
+        language: python
         pass_filenames: false
-        stages: pre-commit
+        stages: [pre-commit]
 
-      - id: identity
+      - id: behave
         name: Kör tester med Behave
         entry: behave
-        language: system
+        language: python
         pass_filenames: false
-        stages: pre-commit
+        stages: [pre-commit]
+
+      - id: flake8
+        name: Kör tester med Flake8
+        entry: flake8 src features tests
+        language: python
+        pass_filenames: false
+        stages: [pre-commit]
