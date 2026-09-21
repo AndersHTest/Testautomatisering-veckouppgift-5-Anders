@@ -11,4 +11,3 @@
 | 3 Bankkonto                     | 100%   | 🟢     |
 | 4 Bibliotek                     | 80%    | 🟡     |
 
-<br>
