@@ -1,3 +1,4 @@
+#noinspection CucumberUndefinedStep
 Feature: Inventory
 
   Scenario: Lägg till produkt

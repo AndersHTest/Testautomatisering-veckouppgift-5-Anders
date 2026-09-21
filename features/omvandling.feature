@@ -1,3 +1,4 @@
+#noinspection CucumberUndefinedStep
 Feature: enkel temperaturomvandlare
 
   Scenario: Omvandla temperatur från F till C

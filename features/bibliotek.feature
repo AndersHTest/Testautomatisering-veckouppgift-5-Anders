@@ -1,3 +1,4 @@
+#noinspection CucumberUndefinedStep
 Feature: Bibliotek
 
   Scenario: Registrera användare på biblioteket

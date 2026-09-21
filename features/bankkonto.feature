@@ -1,3 +1,4 @@
+#noinspection CucumberUndefinedStep
 Feature: Bankkonto
 
   Scenario: skapa ett nytt konto
