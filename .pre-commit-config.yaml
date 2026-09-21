@@ -1,0 +1,16 @@
+repos:
+  - repo: meta
+    hooks:
+      - id: identity
+        name: Kör tester med Pytest
+        entry: pytest
+        language: system
+        pass_filenames: false
+        stages: pre-commit
+
+      - id: identity
+        name: Kör tester med Behave
+        entry: behave
+        language: system
+        pass_filenames: false
+        stages: pre-commit
