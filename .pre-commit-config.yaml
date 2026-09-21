@@ -6,6 +6,7 @@ repos:
         entry: pytest
         language: python
         pass_filenames: false
+        always_run: true
         stages: [pre-commit]
 
       - id: behave
@@ -13,6 +14,7 @@ repos:
         entry: behave
         language: python
         pass_filenames: false
+        always_run: true
         stages: [pre-commit]
 
       - id: flake8
@@ -20,4 +22,5 @@ repos:
         entry: flake8 src features tests
         language: python
         pass_filenames: false
+        always_run: true
         stages: [pre-commit]
